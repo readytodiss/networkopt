@@ -12,37 +12,37 @@ This Go library provides a set of functions to optimize network performance by c
 ## Installation 
 go get github.com/readytodiss/networkopt
 
-Usage
+## Usage
 Here is a basic example of how to use the networkopt library to perform network optimizations:
 
-package main
 
-import (
-    "fmt"
-    "log"
-    "github.com/your-username/networkopt" // Replace with your module path
-)
-
-func main() {
-    // Configure RSS
-    if err := networkopt.SetRSS("eth0", 4); err != nil {
-        log.Fatalf("Failed to set RSS: %v", err)
-    }
     
-    // Tune kernel parameters
-    if err := networkopt.SetKernelTuning("net.core.rmem_max", "16777216"); err != nil {
-        log.Fatalf("Failed to tune kernel parameters: %v", err)
-    }
+    import (
+        "fmt"
+        "log"
+        "github.com/readytodiss/networkopt"
+    )
     
-    // Configure NIC settings
-    if err := networkopt.ConfigureNIC("eth0", "tx", "on"); err != nil {
-        log.Fatalf("Failed to configure NIC: %v", err)
+    func main() {
+        // Configure RSS
+        if err := networkopt.SetRSS("eth0", 4); err != nil {
+            log.Fatalf("Failed to set RSS: %v", err)
+        }
+        
+        // Tune kernel parameters
+        if err := networkopt.SetKernelTuning("net.core.rmem_max", "16777216"); err != nil {
+            log.Fatalf("Failed to tune kernel parameters: %v", err)
+        }
+        
+        // Configure NIC settings
+        if err := networkopt.ConfigureNIC("eth0", "tx", "on"); err != nil {
+            log.Fatalf("Failed to configure NIC: %v", err)
+        }
+        
+        // Set IRQ balance
+        if err := networkopt.SetIRQBalance("eth0", "0-3"); err != nil {
+            log.Fatalf("Failed to set IRQ balance: %v", err)
+        }
+        
+        fmt.Println("Network optimizations applied successfully.")
     }
-    
-    // Set IRQ balance
-    if err := networkopt.SetIRQBalance("eth0", "0-3"); err != nil {
-        log.Fatalf("Failed to set IRQ balance: %v", err)
-    }
-    
-    fmt.Println("Network optimizations applied successfully.")
-}
