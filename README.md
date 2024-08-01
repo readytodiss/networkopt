@@ -8,3 +8,6 @@ This Go library provides a set of functions to optimize network performance by c
 - **Kernel Tuning:** Adjust kernel parameters for improved network performance.
 - **NIC Configuration:** Set various NIC settings.
 - **IRQ Balancing:** Configure IRQ balancing to optimize interrupt handling.
+
+## Installation 
+go get github.com/readytodiss/networkopt
